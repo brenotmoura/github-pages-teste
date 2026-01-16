@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamentos em Massa - Minicube</title>
+    <link rel="stylesheet" href="pagamentos.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pagamentos em Massa</h1>
+            <p>Cole dados da planilha para enviar pagamentos para o Minicube</p>
+        </header>
+
+        <section class="config-section">
+            <h2>Configuracao</h2>
+            <div class="form-group">
+                <label for="apiKey">API Key:</label>
+                <input type="password" id="apiKey" placeholder="mk_sua_chave_aqui">
+                <button id="toggleKey" class="btn-small">Mostrar</button>
+            </div>
+        </section>
+
+        <section class="instructions">
+            <h2>Instrucoes</h2>
+            <p>Cole os dados da planilha com as colunas na ordem:</p>
+            <div class="columns-order">
+                <span>Data Pagamento</span>
+                <span>ID Processo</span>
+                <span>Forma Pagamento</span>
+                <span>Parcela</span>
+                <span>Valor</span>
+                <span>Status</span>
+            </div>
+            <div class="example">
+                <strong>Exemplo:</strong> 2025-01-15 | 123 | Pix | 1 | 500.00 | Em Aberto
+            </div>
+            <div class="options-info">
+                <p><strong>Forma de Pagamento:</strong> Dinheiro, Pix, Cartao de Credito, Cartao de Debito, Cheque, Recorrencia</p>
+                <p><strong>Status:</strong> Em Aberto, Pago, Cancelado</p>
+            </div>
+        </section>
+
+        <section class="input-section">
+            <h2>Dados</h2>
+            <textarea id="dataInput" placeholder="Cole aqui os dados da planilha (separados por tab ou ;)"></textarea>
+            <div class="actions">
+                <button id="parseBtn" class="btn-primary">Processar Dados</button>
+                <button id="clearBtn" class="btn-secondary">Limpar</button>
+            </div>
+        </section>
+
+        <section class="preview-section" id="previewSection" style="display: none;">
+            <h2>Preview <span id="recordCount"></span></h2>
+            <div class="table-wrapper">
+                <table id="previewTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Data Pagamento</th>
+                            <th>ID Processo</th>
+                            <th>Forma Pagamento</th>
+                            <th>Parcela</th>
+                            <th>Valor</th>
+                            <th>Status</th>
+                            <th>Resultado</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="actions">
+                <button id="sendBtn" class="btn-success">Enviar Todos</button>
+                <span id="progress"></span>
+            </div>
+        </section>
+
+        <section class="log-section" id="logSection" style="display: none;">
+            <h2>Log de Envio</h2>
+            <div id="logContent"></div>
+        </section>
+    </div>
+
+    <script src="pagamentos.js"></script>
+</body>
+</html>
